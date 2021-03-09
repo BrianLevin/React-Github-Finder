@@ -1,6 +1,5 @@
 import React from 'react'; // main library
 import ReactDOM from 'react-dom'; // render the browser
-import './index.css';
 import App from './App'; //the  app js file
 import reportWebVitals from './reportWebVitals';
 
