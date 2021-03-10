@@ -8,7 +8,7 @@ import React, { Component } from 'react'
         this.state  = { // state is just a javascript object
          id: 'id',
          login: 'mojombo',
-         avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4',
+         avatar_url: 'https://avatars.githubusercontent.com/u/2?v=4',
          html_url: 'https://github.com/mojombo'
 
 
@@ -17,11 +17,12 @@ import React, { Component } from 'react'
         }
     }
     render() {
-        return 
+        return  (
             <div className = "card text-center">
             <img src = {this.state.avatar_url}  alt= "" className = "round-img" style= {{width: '60px'}} />   {/*  grab somthing from state within a class also included some  globall css class and added inline style */}
             </div>
         
+        );
     }
 }
 

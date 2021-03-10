@@ -6,7 +6,7 @@ import './App.css';
 class App  extends Component{
 
   render() { // render is a method within a class life cycle method and runs at a certain point when the components are loaded and then it renders
-const numbers= [1,2,3];
+//const numbers= [1,2,3];
 
   return (
     <div className = 'App'>
