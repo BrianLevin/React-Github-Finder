@@ -20,11 +20,11 @@ import React, { Component } from 'react'
         return  (
             <div className = "card text-center">
             <img src = {this.state.avatar_url}  alt= "" className = "round-img" style= {{width: '60px'}} />   {/*  grab somthing from state within a class also included some  globall css class and added inline style */}
-            <h3>{this.state.login}</h3>
+            <h3>{this.state.login}</h3> {/* shows login name */}
             <div>
             <a href = {this.state.html_url} className= "btn btn-dark btn-sm my-1"> More
             
-            </a>
+            </a> {/* button to click to get to url */}
             </div>
             </div>
         
