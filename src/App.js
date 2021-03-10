@@ -1,4 +1,4 @@
-import React,{Component} from "react";
+import React,{ Component } from "react";
 
 import './App.css';
 
@@ -8,11 +8,10 @@ class App  extends Component{
 
 
   return (
-    <React.Fragment>
-     <h1>Hello from React</h1>
-
-     <h2> Good Bye</h2>
-    </React.Fragment>
+    <div className = 'App'>
+     <h1>Hello</h1>
+     
+    </div>
   );
 }
 }
