@@ -29,12 +29,15 @@ import React, { Component } from 'react'
 
 
     render() {
+
+const {login, avatar_url, html_url } = this.state // destructored this.state to pull value  out of the object
+
         return  (
             <div className = "card text-center">
             <img src = {this.state.avatar_url}  alt= "" className = "round-img" style= {{width: '60px'}} />   {/*  grab somthing from state within a class also included some  globall css class and added inline style */}
-            <h3>{this.state.login}</h3> {/* shows login name */}
+            <h3>{login}</h3> {/* shows login name */}
             <div>
-            <a href = {this.state.html_url} className= "btn btn-dark btn-sm my-1"> More
+            <a href = {html_url} className= "btn btn-dark btn-sm my-1"> More
             
             </a> {/* button to click to get to url */}
             </div>
