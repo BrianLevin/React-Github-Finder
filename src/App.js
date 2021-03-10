@@ -1,5 +1,5 @@
 import React,{ Component } from "react";
-import Navbar from './components/layout/Navbat';
+import Navbar from './components/layout/Navbar';
 
 import './App.css';
 
@@ -10,7 +10,7 @@ class App  extends Component{
 
   return (
     <div className = 'App'>
-     <h1>Hello</h1>
+     <Navbar />
      
     </div>
   );
