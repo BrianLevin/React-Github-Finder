@@ -8,9 +8,11 @@ class App  extends Component{
 
 
   return (
-    <div className="App">
+    <React.Fragment>
      <h1>Hello from React</h1>
-    </div>
+
+     <h2> Good Bye</h2>
+    </React.Fragment>
   );
 }
 }
