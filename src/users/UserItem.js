@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export class userItem extends Component {
+ class userItem extends Component {
     render() {
         return (
             <div>
-                
+                UserItem
             </div>
         )
     }

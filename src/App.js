@@ -1,6 +1,6 @@
 import React,{ Component } from "react";
 import Navbar from './components/layout/Navbar'; // exported from navbar class
-
+import UserItem from './components/users/UserItem'
 import './App.css';
 
 class App  extends Component{
