@@ -1,5 +1,5 @@
 import React,{ Component } from "react";
-import Navbar from './components/layout/Navbar';
+import Navbar from './components/layout/Navbar'; // exported from navbar class
 
 import './App.css';
 
@@ -10,7 +10,7 @@ class App  extends Component{
 
   return (
     <div className = 'App'>
-     <Navbar /> 
+     <Navbar />   {/* nav bar props get passed here or they can be overwritten here if you type directly in the navbar */}
      
     </div>
   );
