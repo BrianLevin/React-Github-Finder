@@ -1,4 +1,5 @@
 import React,{ Component } from "react";
+import Navbar from './components/layout/Navbat';
 
 import './App.css';
 
