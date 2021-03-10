@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'; // declare prop types
+import PropTypes from 'prop-types'; // declare prop types prop checiking
 
 
 
@@ -12,7 +12,7 @@ icon: 'fab fa-github'
 
     }
 
-    static propTypes = {
+    static propTypes = { // prop checking
 title: PropTypes.string.isRequired,
 icon: PropTypes.string.isRequired
 
