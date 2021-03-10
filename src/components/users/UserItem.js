@@ -17,11 +17,11 @@ import React, { Component } from 'react'
         }
     }
     render() {
-        return (
-            <div>
-                UserItem
+        return 
+            <div className = "card text-center">
+            <img src = {this.state.avatar_url}  alt= "" className = "round-img" style= {{width: '60px'}} />   {/*  grab somthing from state within a class also included some  globall css class and added inline style */}
             </div>
-        )
+        
     }
 }
 
