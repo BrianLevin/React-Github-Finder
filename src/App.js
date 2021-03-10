@@ -10,7 +10,7 @@ class App  extends Component{
 
   return (
     <div className = 'App'>
-     <Navbar />
+     <Navbar title = " Github Finder" /> // nav bar prpp
      
     </div>
   );
