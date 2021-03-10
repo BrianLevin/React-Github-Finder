@@ -2,6 +2,15 @@ import React, { Component } from 'react'
 
    class UserItem extends Component {
 
+    state  = { // state is just a javascript object
+        id: 'id',
+        login: 'mojombo',
+        avatar_url: 'https://avatars.githubusercontent.com/u/2?v=4',
+        html_url: 'https://github.com/mojombo'
+
+    };
+
+/*
     constructor () { // adding state to a class based component using a constructor function thats going to run when the component runs
         super();// call super in order to call the parent class constructor
 
@@ -16,6 +25,9 @@ import React, { Component } from 'react'
 
         }
     }
+    */
+
+
     render() {
         return  (
             <div className = "card text-center">
