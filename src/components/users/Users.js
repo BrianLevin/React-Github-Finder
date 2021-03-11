@@ -44,7 +44,9 @@ users: [ {
     render() {
         return (
             <div>
-                
+                {this.state.users.map(user => (
+                    <div>{user.login}</div>
+                ))} {/*  a high order array method that takes in a function and will use a call a call back function */}
             </div>
         )
     }
