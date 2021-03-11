@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import UserIem from './UserItem';
 
 export class Users extends Component {
 state= {
@@ -44,8 +45,8 @@ users: [ {
     render() {
         return (
             <div>
-                {this.state.users.map(user => (
-                    <div key= {user.id}>{user.login}</div>
+                {this.state.users.map(user => (   // pass in the whole user for all object values then pass as prop to user item
+                    <UserItem key= {user.id}>user={user}</UserItem>  // used key to break organize code more efficently and prevent warnings in the console
                 ))} {/*  a high order array method that takes in a function and will use a call a call back function to get data */}
             </div>
         )
