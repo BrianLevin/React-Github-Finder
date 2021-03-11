@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserIem from './UserItem';
+import UserItem from './UserItem';
 
 export class Users extends Component {
 state= {

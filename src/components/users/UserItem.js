@@ -2,13 +2,7 @@ import React, { Component } from 'react'
 
    class UserItem extends Component {
 
-    state  = { // state is just a javascript object
-        id: 'id',
-        login: 'mojombo',
-        avatar_url: 'https://avatars.githubusercontent.com/u/2?v=4',
-        html_url: 'https://github.com/mojombo'
 
-    };
 
 /*
     constructor () { // adding state to a class based component using a constructor function thats going to run when the component runs
@@ -30,7 +24,7 @@ import React, { Component } from 'react'
 
     render() {
 
-const {login, avatar_url, html_url } = this.state // destructored this.state to pull value  out of the object
+const {login, avatar_url, html_url } = this.props.user // destructored this.props.user to hget values
 
         return  (
             <div className = "card text-center">
