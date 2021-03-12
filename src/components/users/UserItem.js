@@ -1,25 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
-class UserItem extends Component {
-  /*
-    constructor () { // adding state to a class based component using a constructor function thats going to run when the component runs
-        super();// call super in order to call the parent class constructor
+const UserItem= (props)=> {
 
-        this.state  = { // state is just a javascript object
-         id: 'id',
-         login: 'mojombo',
-         avatar_url: 'https://avatars.githubusercontent.com/u/2?v=4',
-         html_url: 'https://github.com/mojombo'
-
-
-
-
-        }
-    }
-    */
-
-  render() {
-    const { login, avatar_url, html_url } = this.props.user; // destructored this.props.user to hget values
+  
+    const { login, avatar_url, html_url } = props.user; // destructored this.props.user to hget values
 
     return (
       <div className="card text-center">
@@ -40,7 +24,7 @@ class UserItem extends Component {
         </div>
       </div>
     );
-  }
+  
 }
 
 export default UserItem;
