@@ -10,9 +10,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Navbar />{" "}
-        {/* nav bar props get passed here or they can be overwritten here if you type directly in the navbar */}
+        <Navbar />
+
+        <div className = "container">
         <Users />
+        </div>
+        {/* nav bar props get passed here or they can be overwritten here if you type directly in the navbar */}
+        
       </div>
     );
   }
