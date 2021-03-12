@@ -1,9 +1,9 @@
 import React from "react";
 
-const UserItem= (props)=> {
+const UserItem= ({user: {login, avatar_url, html_url}})=> {
 
   
-    const { login, avatar_url, html_url } = props.user; // destructored this.props.user to hget values
+    // destructored this.props.user to hget values
 
     return (
       <div className="card text-center">
