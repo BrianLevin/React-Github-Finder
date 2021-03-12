@@ -1,10 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-   class UserItem extends Component {
-
-
-
-/*
+class UserItem extends Component {
+  /*
     constructor () { // adding state to a class based component using a constructor function thats going to run when the component runs
         super();// call super in order to call the parent class constructor
 
@@ -21,24 +18,29 @@ import React, { Component } from 'react'
     }
     */
 
+  render() {
+    const { login, avatar_url, html_url } = this.props.user; // destructored this.props.user to hget values
 
-    render() {
-
-const {login, avatar_url, html_url } = this.props.user; // destructored this.props.user to hget values
-
-        return  (
-            <div className = "card text-center">
-            <img src = {avatar_url}  alt= "" className = "round-img" style= {{width: '60px'}} />   {/*  grab somthing from state within a class also included some  globall css class and added inline style */}
-            <h3>{login}</h3> {/* shows login name */}
-            <div>
-            <a href = {html_url} className= "btn btn-dark btn-sm my-1"> More
-            
-            </a> {/* button to click to get to url */}
-            </div>
-            </div>
-        
-        );
-    }
+    return (
+      <div className="card text-center">
+        <img
+          src={avatar_url}
+          alt=""
+          className="round-img"
+          style={{ width: "60px" }}
+        />{" "}
+        {/*  grab somthing from state within a class also included some  globall css class and added inline style */}
+        <h3>{login}</h3> {/* shows login name */}
+        <div>
+          <a href={html_url} className="btn btn-dark btn-sm my-1">
+            {" "}
+            More
+          </a>{" "}
+          {/* button to click to get to url */}
+        </div>
+      </div>
+    );
+  }
 }
 
-export default UserItem
+export default UserItem;
