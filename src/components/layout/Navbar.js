@@ -1,32 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types'; // declare prop types prop checiking
 
 
 
 
-export class Navbar extends Component {
-
-static defaultProps = {  /* pass default  props in object  */
-title: 'Github Finder',
-icon: 'fab fa-github'
-
-    }
-
-    static propTypes = { // prop checking
-title: PropTypes.string.isRequired,
-icon: PropTypes.string.isRequired
+const Navbar=(props) => {
 
 
-    }
-    render() {
+
+
+    
+    
         return (
             <nav className= "  navbar bg-primary">
-                <h1> <i className= {this.props.icon} /> {this.props.title} {/* render the props  */}
+                <h1> <i className= {props.icon} /> {props.title} {/* render the props  */}
                
                </h1>
             </nav>
         )
-    }
 }
+
+Navbar.defaultProps = {  /* pass default  props in object  */
+    title: 'Github Finder',
+    icon: 'fab fa-github'
+    
+        }
+    
+        Navbar.propTypes = { // prop checking
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired
+        };
 
 export default Navbar
