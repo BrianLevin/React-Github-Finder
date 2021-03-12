@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types'; // declare prop types prop checiking
 
 
+// destructured icon and title
 
-
-const Navbar=(props) => {
+const Navbar=({icon,title}) => {
 
 
 
@@ -13,7 +13,7 @@ const Navbar=(props) => {
     
         return (
             <nav className= "  navbar bg-primary">
-                <h1> <i className= {props.icon} /> {props.title} {/* render the props  */}
+                <h1> <i className= {icon} /> {title} {/* render the props  */}
                
                </h1>
             </nav>

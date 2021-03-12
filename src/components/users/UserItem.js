@@ -1,5 +1,5 @@
 import React from "react";
-
+// destructured user and put props in useritem
 const UserItem= ({user: {login, avatar_url, html_url}})=> {
 
   
