@@ -16,10 +16,15 @@ loading: false
 
   //life cycle method get users data with a promose
    async componentDidMount(){
-this.setState({loading});
+     //loading
+this.setState({loading: true});
+
+
 
      const res= await axios.get('https://api.github.com/users')
-  
+  // get the data from user, then set loading back to false
+this.setState({ user: res.data,loading: false });
+
   console.log(res.data);
 
   }
