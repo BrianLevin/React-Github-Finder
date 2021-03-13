@@ -5,11 +5,20 @@ import axios from 'axios';
 import "./App.css";
 
 class App extends Component {
+// put res.data users that come back into state
+  state {
+
+users: [],
+loading: false
+
+
+  }
+
   //life cycle method get users data with a promose
    async componentDidMount(){
-     const res= await axios
-  .get('https://api.github.com/users')
-  .then(res => console.log(res.data));
+     const res= await axios.get('https://api.github.com/users')
+  
+  console.log(res.data);
 
   }
 
