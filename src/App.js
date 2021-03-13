@@ -6,8 +6,10 @@ import "./App.css";
 
 class App extends Component {
   //life cycle method get users data with a promose
-  componentDidMount(){
-  axios.get('https://api.github.com/users').then(res=> console.log(res.data));
+   async componentDidMount(){
+     const res= await axios
+  .get('https://api.github.com/users')
+  .then(res => console.log(res.data));
 
   }
 
