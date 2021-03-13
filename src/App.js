@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import Navbar from "./components/layout/Navbar"; // exported from navbar class
 import Users from "./components/users/Users";
+import axios from 'axios';
 import "./App.css";
 
 class App extends Component {
+  componentDidMount(){
+  console.log(123);
+
+  }
+
+
   render() {
+
     // render is a method within a class life cycle method and runs at a certain point when the components are loaded and then it renders
     //const numbers= [1,2,3];
 
