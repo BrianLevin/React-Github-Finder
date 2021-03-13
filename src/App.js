@@ -40,7 +40,9 @@ this.setState({ user: res.data,loading: false });
         <Navbar />
 
         <div className = "container">
-        <Users />
+
+        {/*  passed down users  state components to props */}
+        <Users  loading= {this.state.loading} users= {this.state.users}/>
         </div>
         {/* nav bar props get passed here or they can be overwritten here if you type directly in the navbar */}
         
