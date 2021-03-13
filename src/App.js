@@ -6,7 +6,7 @@ import "./App.css";
 
 class App extends Component {
 // put res.data users that come back into state
-  state {
+  state = {
 
 users: [],
 loading: false
@@ -16,6 +16,8 @@ loading: false
 
   //life cycle method get users data with a promose
    async componentDidMount(){
+this.setState({loading});
+
      const res= await axios.get('https://api.github.com/users')
   
   console.log(res.data);
