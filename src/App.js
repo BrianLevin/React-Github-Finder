@@ -5,8 +5,9 @@ import axios from 'axios';
 import "./App.css";
 
 class App extends Component {
+  //life cycle method get users data with a promose
   componentDidMount(){
-  console.log(123);
+  axios.get('https://api.github.com/users').then(res=> console.log(res.data));
 
   }
 
