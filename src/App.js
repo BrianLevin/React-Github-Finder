@@ -33,7 +33,7 @@ class App extends Component {
 
         <div className="container">
           {/*  passed down users  state components to props */}
-          <Users loading={this.state.loading} users={this.state.users} />
+          <Users loading={this.state.loading} users={this.setState({user:res.data})} />
         </div>
       </div>
     );
