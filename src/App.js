@@ -18,7 +18,7 @@ class App extends Component {
 
     const res = await axios.get("https://api.github.com/users");
     // get the data from user, then set loading back to false
-    this.setState({ user: res.data, loading: false });
+    this.setState({ users: res.data, loading: false });
 
     console.log(res.data);
   }
@@ -33,7 +33,7 @@ class App extends Component {
 
         <div className="container">
           {/*  passed down users  state components to props */}
-          <Users loading={this.state.loading} users={this.setState({user:res.data})} />
+          <Users loading={this.state.loading} users= {this.state.users} />
         </div>
       </div>
     );
