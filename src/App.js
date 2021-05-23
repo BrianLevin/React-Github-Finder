@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar"; // exported from navbar class
 import Users from "./components/users/Users";
 import Search from "./components/users/Search";
 import axios from "axios";
+import { BrowserRouter as Router, Switch, Route } from  'react-router-dom';
 import Alert from "./components/layout/Alert";
 import "./App.css";
 
@@ -54,6 +55,7 @@ setTimeout(()=> this.setState({alert:null}), 5000)
     //const numbers= [1,2,3];
 
     return (
+      <Router>
       <div className="App">
         <Navbar />
 
@@ -65,6 +67,7 @@ setTimeout(()=> this.setState({alert:null}), 5000)
           <Users loading={loading} users= {users} />
         </div>
       </div>
+      </Router>
     );
   }
 }
