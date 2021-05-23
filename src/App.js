@@ -22,6 +22,8 @@ class App extends Component {
     // // get the data from user, then set loading back to false
     // this.setState({ users: res.data,items, loading: false });
 // function that calls search users
+
+// search github users
     searchUsers= async text => {
 this.setState({loading: true})
                                                // user will get gitgubs and not run out of requests because of github client and secret
@@ -31,7 +33,9 @@ this.setState({loading: true})
       
     }
   //}
+// clear users from state ???
 
+clearUsers = () => this.setState({users: [], loading: false });
 
   render() {
     // render is a method within a class life cycle method and runs at a certain point when the components are loaded and then it renders
@@ -43,7 +47,7 @@ this.setState({loading: true})
 
         <div className="container">
           {/*sending a prop up instead of down from search users */}
-        <Search searchUsers= {this.searchUsers}/>
+        <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers}/>
           {/*  passed down users  state components to props */}
           <Users loading={this.state.loading} users= {this.state.users} />
         </div>

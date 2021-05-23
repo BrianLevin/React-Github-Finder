@@ -7,9 +7,10 @@ export class Search extends Component {
 state= {
     text: ''
 }
-
+// make sure code is more robust with correct prop types
 static propTypes = {
     searchUsers: PropTypes.func.isRequired,
+    clearUsers: PropTypes.func.isRequired,
 }
 // onsubmit subts data
 onSubmit = (e) => {
@@ -35,7 +36,7 @@ this.setState({[e.target.name]: e.target.value })
 
 <input type = "text " name= "text" placeHolder = "Search Users..." value = {this.state.text} onChange = {this.onChange}/>
 <input type= "submit" value="Search" vlassName= "btn btn-dark btn-block" />
-
+<button className= "btn- btn-light btn-block" onClick={this.props.clearUsers}>Clear</button>
                 </form>
             </div>
         )
