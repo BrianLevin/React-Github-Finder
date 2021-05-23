@@ -46,8 +46,8 @@ clearUsers = () => this.setState({users: [], loading: false });
         <Navbar />
 
         <div className="container">
-          {/*sending a prop up instead of down from search users */}
-        <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers}/>
+          {/*sending a prop up instead of down from search users this gets rendered */}
+        <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers} showClear={this.state.users.length > 0 ? true: false}/>
           {/*  passed down users  state components to props */}
           <Users loading={this.state.loading} users= {this.state.users} />
         </div>
