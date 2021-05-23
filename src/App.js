@@ -10,6 +10,7 @@ class App extends Component {
   state = {
     users: [],
     loading: false,
+    alert: null
   };
 
   //life cycle method get users data with a promose
@@ -37,6 +38,13 @@ this.setState({loading: true})
 
 clearUsers = () => this.setState({users: [], loading: false });
 
+// set Alert
+
+setAlert =  (msg, type) => {
+this.setState( {alert: {msg, type}});
+
+}
+
   render() {
 // destricured property
     const{users, loading } = this.state;
@@ -49,7 +57,7 @@ clearUsers = () => this.setState({users: [], loading: false });
 
         <div className="container">
           {/*sending a prop up instead of down from search users this gets rendered */}
-        <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers} showClear={users.length > 0 ? true: false}/>
+        <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers} showClear={users.length > 0 ? true: false} setAlert= {this.setAlert}/>
           {/*  passed down users  state components to props */}
           <Users loading={loading} users= {users} />
         </div>

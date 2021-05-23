@@ -11,16 +11,24 @@ state= {
 static propTypes = {
     searchUsers: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
-    showClear: PropTypes.bool.isRequired
+    showClear: PropTypes.bool.isRequired,
+    setAlert: PropTypes.func.isRequired
 }
 // onsubmit subts data
 onSubmit = (e) => {
 
+    
     e.preventDefault();
-    //subbmited button seaches for users
-    this.props.searchUsers(this.state.text);
-    // clears form after search
-    this.setState( {text: ''});
+    if(this.state.text === '') {
+this.props.setAlert('Please enter somthing', 'light');
+
+    } else{
+//subbmited button seaches for users
+this.props.searchUsers(this.state.text);
+// clears form after search
+this.setState( {text: ''});
+    }
+    
 
 }
 // changes the state
