@@ -29,7 +29,13 @@ this.setState({[e.target.name]: e.target.value })
 
 }
 
+
+
     render() {
+
+// desstructured property
+const {showClear, clearUsers} = this.props
+
         return (
             <div>
             {/* form to seach for user names */}
@@ -39,7 +45,8 @@ this.setState({[e.target.name]: e.target.value })
 <input type= "submit" value="Search" vlassName= "btn btn-dark btn-block" />
 
                 </form>
-            {this.props.showClear && <button className= "btn- btn-light btn-block" onClick={this.props.clearUsers}>Clear</button>}
+                {/* Boolean which will onyl show once users are displayed.*/}
+            {showClear && <button className= "btn- btn-light btn-block" onClick={clearUsers}>Clear</button>}
 
             </div>
         )
