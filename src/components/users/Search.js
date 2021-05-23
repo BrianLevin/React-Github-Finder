@@ -19,6 +19,7 @@ onSubmit = (e) => {
 
     
     e.preventDefault();
+    // alert if user doesnt enter any user names
     if(this.state.text === '') {
 this.props.setAlert('Please enter somthing', 'light');
 

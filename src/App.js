@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar"; // exported from navbar class
 import Users from "./components/users/Users";
 import Search from "./components/users/Search";
 import axios from "axios";
+import Alert from "./components/layout/Alert";
 import "./App.css";
 
 class App extends Component {
@@ -56,6 +57,7 @@ this.setState( {alert: {msg, type}});
         <Navbar />
 
         <div className="container">
+        <Alert alert = {this.state.alert} />
           {/*sending a prop up instead of down from search users this gets rendered */}
         <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers} showClear={users.length > 0 ? true: false} setAlert= {this.setAlert}/>
           {/*  passed down users  state components to props */}
