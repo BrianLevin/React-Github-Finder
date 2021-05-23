@@ -22,8 +22,12 @@ class App extends Component {
     // get the data from user, then set loading back to false
     this.setState({ users: res.data, loading: false });
 
-    console.log(res.data);
+    searchUsers=   (text) => {
+
+      console.log(text)
+    }
   }
+
 
   render() {
     // render is a method within a class life cycle method and runs at a certain point when the components are loaded and then it renders
@@ -34,7 +38,7 @@ class App extends Component {
         <Navbar />
 
         <div className="container">
-        <Search />
+        <Search  searchUsers= {this.searchUsers}/>
           {/*  passed down users  state components to props */}
           <Users loading={this.state.loading} users= {this.state.users} />
         </div>
