@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Navbar from "./components/layout/Navbar"; // exported from navbar class
 import Users from "./components/users/Users";
 import Search from "./components/users/Search";
@@ -62,9 +62,16 @@ setTimeout(()=> this.setState({alert:null}), 5000)
         <div className="container">
         <Alert alert = {this.state.alert} />
           {/*sending a prop up instead of down from search users this gets rendered */}
-        <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers} showClear={users.length > 0 ? true: false} setAlert= {this.setAlert}/>
+          <Switch>
+            <Route  exact path =  '/' render ={props =>(
+              <Fragment>
+                 <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers} showClear={users.length > 0 ? true: false} setAlert= {this.setAlert}/>
           {/*  passed down users  state components to props */}
           <Users loading={loading} users= {users} />
+              </Fragment>
+            )}  />
+          </Switch>
+       
         </div>
       </div>
       </Router>
