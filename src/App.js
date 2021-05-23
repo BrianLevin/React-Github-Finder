@@ -13,20 +13,24 @@ class App extends Component {
   };
 
   //life cycle method get users data with a promose
-  async componentDidMount() {
-    console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET);
+  // async componentDidMount() {
+  //   console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET);
     //loading
-    this.setState({ loading: true });
-                                                  // user will get gitgubs and not run out of requests because of github client and secret
-    const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    // get the data from user, then set loading back to false
-    this.setState({ users: res.data, loading: false });
-
-    searchUsers=   (text) => {
-
-      console.log(text)
+    // this.setState({ loading: true });
+    //                                               // user will get gitgubs and not run out of requests because of github client and secret
+    // const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+    // // get the data from user, then set loading back to false
+    // this.setState({ users: res.data,items, loading: false });
+// function that calls search users
+    searchUsers= async text => {
+this.setState({loading: true})
+                                               // user will get gitgubs and not run out of requests because of github client and secret
+    const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+    // get the data from  one user at a time when it searches
+    this.setState({ users: res.data.items, loading: false });
+      
     }
-  }
+  //}
 
 
   render() {
@@ -38,7 +42,8 @@ class App extends Component {
         <Navbar />
 
         <div className="container">
-        <Search  searchUsers= {this.searchUsers}/>
+          {/*sending a prop up instead of down from search users */}
+        <Search searchUsers= {this.searchUsers}/>
           {/*  passed down users  state components to props */}
           <Users loading={this.state.loading} users= {this.state.users} />
         </div>
