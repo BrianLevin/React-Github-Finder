@@ -38,6 +38,8 @@ this.setState({loading: true})
 clearUsers = () => this.setState({users: [], loading: false });
 
   render() {
+// destricured property
+    const{users, loading } = this.state;
     // render is a method within a class life cycle method and runs at a certain point when the components are loaded and then it renders
     //const numbers= [1,2,3];
 
@@ -47,9 +49,9 @@ clearUsers = () => this.setState({users: [], loading: false });
 
         <div className="container">
           {/*sending a prop up instead of down from search users this gets rendered */}
-        <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers} showClear={this.state.users.length > 0 ? true: false}/>
+        <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers} showClear={users.length > 0 ? true: false}/>
           {/*  passed down users  state components to props */}
-          <Users loading={this.state.loading} users= {this.state.users} />
+          <Users loading={loading} users= {users} />
         </div>
       </div>
     );
