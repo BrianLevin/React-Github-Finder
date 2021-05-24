@@ -50,7 +50,7 @@ const {showClear, clearUsers} = this.props
             {/* form to seach for user names */}
                 <form  onSubmit= {this.onSubmit} className="form">
 
-<input type = "text " name= "text" placeHolder = "Search Users..." value = {this.state.text} onChange = {this.onChange}/>
+<input type = "text " name= "text"  className = "form-control" placeHolder = "Search Users..." value = {this.state.text} onChange = {this.onChange}/>
 <input type= "submit" value="Search" className= "btn btn-dark btn-block" />
 
                 </form>

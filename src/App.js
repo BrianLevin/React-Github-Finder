@@ -6,6 +6,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from  'react-router-dom';
 import Alert from "./components/layout/Alert";
 import "./App.css";
+import About from './components/pages/About'
 
 class App extends Component {
   // put res.data users that come back into state
@@ -70,6 +71,7 @@ setTimeout(()=> this.setState({alert:null}), 5000)
           <Users loading={loading} users= {users} />
               </Fragment>
             )}  />
+            <Route  exact path = '/about' component ={About} />
           </Switch>
        
         </div>

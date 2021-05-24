@@ -250,7 +250,7 @@ img {
 .bg-primary,
 .badge-primary,
 .alert-primary {
-  background: var(--primary-color);
+   background:/* red !important; */ var(--primary-color); 
   color: #fff;
 }
 
@@ -357,6 +357,7 @@ table th {
   width: 100%;
   opacity: 0.9;
   margin-bottom: 1rem;
+  
 }
 
 .navbar ul {
