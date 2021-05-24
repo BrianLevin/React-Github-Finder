@@ -1,6 +1,7 @@
 import React from "react";
 
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // destructured user and put props in useritem
 const UserItem= ({user: {login, avatar_url, html_url}})=> {
@@ -19,10 +20,10 @@ const UserItem= ({user: {login, avatar_url, html_url}})=> {
         {/*  grab somthing from state within a class also included some  globall css class and added inline style */}
         <h3>{login}</h3> {/* shows login name */}
         <div>
-          <a href={html_url} className="btn btn-dark btn-sm my-1">
+          <Link to={`/user/${login}`} className="btn btn-dark btn-sm my-1">
             {" "}
             More
-          </a>{" "}
+          </Link>{" "}
           {/* button to click to get to url */}
         </div>
       </div>

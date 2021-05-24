@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar"; // exported from navbar class
 import Users from "./components/users/Users";
 import Search from "./components/users/Search";
 import axios from "axios";
+import User from "./components/users/User";
 import { BrowserRouter as Router, Switch, Route } from  'react-router-dom';
 import Alert from "./components/layout/Alert";
 import "./App.css";
@@ -12,6 +13,7 @@ class App extends Component {
   // put res.data users that come back into state
   state = {
     users: [],
+    user: {},
     loading: false,
     alert: null
   };
@@ -37,6 +39,18 @@ this.setState({loading: true})
       
     }
   //}
+// get a single Github User
+
+getUser =  async (username) => {
+
+  this.setState({loading: true})
+  // user will get gitgubs and not run out of requests because of github client and secret
+const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+// get the data from  one user at a time when it searches
+this.setState({ user: res.data, loading: false });  
+}
+
+
 // clear users from state ???
 
 clearUsers = () => this.setState({users: [], loading: false });
@@ -51,7 +65,7 @@ setTimeout(()=> this.setState({alert:null}), 5000)
 
   render() {
 // destricured property
-    const{users, loading } = this.state;
+    const{users, user, loading } = this.state;
     // render is a method within a class life cycle method and runs at a certain point when the components are loaded and then it renders
     //const numbers= [1,2,3];
 
@@ -72,6 +86,9 @@ setTimeout(()=> this.setState({alert:null}), 5000)
               </Fragment>
             )}  />
             <Route  exact path = '/about' component ={About} />
+            <Route  exact path = '/user/:login' render ={props =>(
+              <User {...props } getUser={this.getUser}  user ={user} loading ={loading}/>
+            )} />
           </Switch>
        
         </div>
