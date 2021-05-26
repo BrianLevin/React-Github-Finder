@@ -47,9 +47,9 @@ getUser =  async (username) => {
 
   this.setState({loading: true})
   // user will get gitgubs and not run out of requests because of github client and secret
-const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:ascclient_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
 // get the data from  one user at a time when it searches
-this.setState({ repos: res.data, loading: false });  
+this.setState({ user: res.data, loading: false });  
 }
 
 // Get users Repos
@@ -57,9 +57,9 @@ getUserRepos =  async (username) => {
 
   this.setState({loading: true})
   // user will get gitgubs and not run out of requests because of github client and secret
-const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
 // get the data from  one user at a time when it searches
-this.setState({ user: res.data, loading: false });  
+this.setState({ repos: res.data, loading: false });  
 }
 
 // clear users from state ???
