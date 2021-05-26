@@ -14,8 +14,10 @@ class App extends Component {
   state = {
     users: [],
     user: {},
+    repos: [],
     loading: false,
     alert: null
+    
   };
 
   //life cycle method get users data with a promose
@@ -45,11 +47,20 @@ getUser =  async (username) => {
 
   this.setState({loading: true})
   // user will get gitgubs and not run out of requests because of github client and secret
+const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:ascclient_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+// get the data from  one user at a time when it searches
+this.setState({ repos: res.data, loading: false });  
+}
+
+// Get users Repos
+getUserRepos =  async (username) => {
+
+  this.setState({loading: true})
+  // user will get gitgubs and not run out of requests because of github client and secret
 const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
 // get the data from  one user at a time when it searches
 this.setState({ user: res.data, loading: false });  
 }
-
 
 // clear users from state ???
 
@@ -65,7 +76,7 @@ setTimeout(()=> this.setState({alert:null}), 5000)
 
   render() {
 // destricured property
-    const{users, user, loading } = this.state;
+    const{users, user,  repos, loading } = this.state;
     // render is a method within a class life cycle method and runs at a certain point when the components are loaded and then it renders
     //const numbers= [1,2,3];
 
@@ -87,7 +98,7 @@ setTimeout(()=> this.setState({alert:null}), 5000)
             )}  />
             <Route  exact path = '/about' component ={About} />
             <Route  exact path = '/user/:login' render ={props =>(
-              <User {...props } getUser={this.getUser}  user ={user} loading ={loading}/>
+              <User {...props } getUser={this.getUser}  getUserRepos={this.getUserRepos} user ={user}  repos= {repos} loading ={loading}/>
             )} />
           </Switch>
        
