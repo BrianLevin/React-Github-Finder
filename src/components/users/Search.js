@@ -1,56 +1,45 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types'
 
-export class Search extends Component {
+const Search = ({searchUsers, showClear, clearUsers, setAlert})=> {
 
-    // attach state to the input
-state= {
-    text: ''
-}
-// make sure code is more robust with correct prop types
-static propTypes = {
-    searchUsers: PropTypes.func.isRequired,
-    clearUsers: PropTypes.func.isRequired,
-    showClear: PropTypes.bool.isRequired,
-    setAlert: PropTypes.func.isRequired
-}
+  const{text,setText} = useState('');
+
 // onsubmit subts data
-onSubmit = (e) => {
+const onSubmit = (e) => {
 
     
     e.preventDefault();
     // alert if user doesnt enter any user names
-    if(this.state.text === '') {
-this.props.setAlert('Please enter somthing', 'light');
+    if(text === '') {
+setAlert('Please enter somthing', 'light');
 
     } else{
 //subbmited button seaches for users
-this.props.searchUsers(this.state.text);
+searchUsers(text);
 // clears form after search
-this.setState( {text: ''});
+setText('');
     }
     
 
 }
-// changes the state
-onChange = (e)  =>{
-this.setState({[e.target.name]: e.target.value })
+
 
 }
 
 
+// changes the state
+const onChange = (e)  =>{
+    setText( e.target.value );
+   
 
-    render() {
-
-// desstructured property
-const {showClear, clearUsers} = this.props
 
         return (
             <div>
             {/* form to seach for user names */}
-                <form  onSubmit= {this.onSubmit} className="form">
+                <form  onSubmit= {onSubmit} className="form">
 
-<input type = "text " name= "text"  className = "form-control" placeHolder = "Search Users..." value = {this.state.text} onChange = {this.onChange}/>
+<input type = "text " name= "text"  className = "form-control" placeHolder = "Search Users..." value = {text} onChange = {onChange}/>
 <input type= "submit" value="Search" className= "btn btn-dark btn-block" />
 
                 </form>
@@ -59,7 +48,15 @@ const {showClear, clearUsers} = this.props
 
             </div>
         )
-    }
+    
 }
 
+
+// make sure code is more robust with correct prop types
+Search.propTypes = {
+    searchUsers: PropTypes.func.isRequired,
+    clearUsers: PropTypes.func.isRequired,
+    showClear: PropTypes.bool.isRequired,
+    setAlert: PropTypes.func.isRequired
+}
 export default Search
