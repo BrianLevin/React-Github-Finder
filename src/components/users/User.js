@@ -2,6 +2,8 @@ import React, { Fragment, Component } from 'react';
 
 import Spinner from "../layout/Spinner";
 
+import Repos from "../repos/Repos"
+
 import PropTypes from "prop-types";
 
 import {Link} from "react-router-dom";
@@ -16,6 +18,7 @@ componentDidMount() {
 static propTypes = {
 loading: PropTypes.bool,
 user: PropTypes.object.isRequired,
+repos: PropTypes.array.isRequired,
 getUserRepos: PropTypes.func.isRequired,
 
 }
@@ -38,7 +41,7 @@ getUserRepos: PropTypes.func.isRequired,
 
         } = this.props.user;
 
-        const { loading } = this.props;
+        const { loading, repos } = this.props;
 
         if(loading) return <Spinner />
 
@@ -103,7 +106,7 @@ Hireable: {' '}
 
     </div>
 
-
+<Repos repos = {repos} />
         </Fragment>;
         
     }
