@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, useEffect } from 'react';
 
 import Spinner from "../layout/Spinner";
 
@@ -8,22 +8,20 @@ import PropTypes from "prop-types";
 
 import {Link} from "react-router-dom";
 
-export class User extends Component {
-componentDidMount() {
+const User = ({user, loading, getUser, getUserRepos, repos, match}) => {
 
-    this.props.getUser(this.props.match.params.login);
-    this.props.getUserRepos(this.props.match.params.login);
-}
+    useEffect(() =>{
+        getUser(match.params.login);
+        getUserRepos(match.params.login);
+        // eslint-disable-nextline
+    }, [])
 
-static propTypes = {
-loading: PropTypes.bool,
-user: PropTypes.object.isRequired,
-repos: PropTypes.array.isRequired,
-getUserRepos: PropTypes.func.isRequired,
+
+
 
 }
 
-    render() {
+   
         const {
             name,
             company,
@@ -39,13 +37,13 @@ getUserRepos: PropTypes.func.isRequired,
             public_gists,
             hireable
 
-        } = this.props.user;
+        } = user;
 
-        const { loading, repos } = this.props;
+    
 
-        if(loading) return <Spinner />
+        if(loading) return <Spinner />;
 
-        return <Fragment>
+        return( <Fragment>
 <Link to= "/" className = "btn btn-light">
 
     Back To Search
@@ -107,9 +105,17 @@ Hireable: {' '}
     </div>
 
 <Repos repos = {repos} />
-        </Fragment>;
+        </Fragment>);
         
+    
+
     }
+
+UserpropTypes = {
+    loading: PropTypes.bool,
+    user: PropTypes.object.isRequired,
+    repos: PropTypes.array.isRequired,
+    getUserRepos: PropTypes.func.isRequired,
 }
 
 export default User

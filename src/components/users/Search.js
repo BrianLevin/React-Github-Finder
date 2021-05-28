@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 
 const Search = ({searchUsers, showClear, clearUsers, setAlert})=> {
 
-  const{text,setText} = useState('');
+    
+  const[text,setText] = useState('');
 
 // onsubmit subts data
 const onSubmit = (e) => {
@@ -25,32 +26,33 @@ setText('');
 }
 
 
-}
+
 
 
 // changes the state
-const onChange = (e)  =>{
+const onChange = e  =>{
     setText( e.target.value );
    
+    
+}
 
 
-        return (
-            <div>
-            {/* form to seach for user names */}
-                <form  onSubmit= {onSubmit} className="form">
+
+return (
+    <div>
+    {/* form to seach for user names */}
+        <form  onSubmit= {onSubmit} className="form">
 
 <input type = "text " name= "text"  className = "form-control" placeHolder = "Search Users..." value = {text} onChange = {onChange}/>
 <input type= "submit" value="Search" className= "btn btn-dark btn-block" />
 
-                </form>
-                {/* Boolean which will onyl show once users are displayed.*/}
-            {showClear && <button className= "btn btn-light btn-block" onClick={clearUsers}>Clear</button>}
+        </form>
+        {/* Boolean which will onyl show once users are displayed.*/}
+    {showClear && <button className= "btn btn-light btn-block" onClick={clearUsers}>Clear</button>}
 
-            </div>
-        )
-    
+    </div>
+)
 }
-
 
 // make sure code is more robust with correct prop types
 Search.propTypes = {
