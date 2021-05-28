@@ -109,7 +109,7 @@ Hireable: {' '}
         
     
 
-    }
+    
 
 UserpropTypes = {
     loading: PropTypes.bool,
