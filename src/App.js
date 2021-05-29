@@ -1,4 +1,4 @@
-import React, { UseState, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import Navbar from "./components/layout/Navbar"; // exported from navbar class
 import Users from "./components/users/Users";
 import Search from "./components/users/Search";
@@ -30,73 +30,78 @@ const {alert, setAlert} = useState(null);
 // function that calls search users
 
 // search github users
-    searchUsers= async text => {
-this.setState({loading: true})
+   const  searchUsers= async text => {
+setLoading(true);
                                                // user will get gitgubs and not run out of requests because of github client and secret
     const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    // get the data from  one user at a time when it searches
-    this.setState({ users: res.data.items, loading: false });
+   setUsers(res.data.items);
+   setLoading(false);
       
     }
   //}
 // get a single Github User
 
-getUser =  async (username) => {
-
-  this.setState({loading: true})
+const getUser =  async (username) => {
+setLoading(true);
   // user will get gitgubs and not run out of requests because of github client and secret
 const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+setUser(res.data);
 // get the data from  one user at a time when it searches
-this.setState({ user: res.data, loading: false });  
+setLoading(false); 
 }
 
 // Get users Repos
-getUserRepos =  async (username) => {
+const getUserRepos =  async (username) => {
 
-  this.setState({loading: true})
+  setLoading(true);
   // user will get gitgubs and not run out of requests because of github client and secret
 const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-// get the data from  one user at a time when it searches
-this.setState({ repos: res.data, loading: false });  
-}
 
+setRepos(res.data);
+// get the data from  one user at a time when it searches
+setLoading(false);
+}
 // clear users from state ???
 
-clearUsers = () => this.setState({users: [], loading: false });
+const clearUsers = () => {
+  setUsers([]);
+  // get the data from  one user at a time when it searches
+  setLoading(false);
+  }
+
 
 // set Alert
 
-setAlert =  (msg, type) => {
-this.setState( {alert: {msg, type}});
+const showAlert =  (msg, type) => {
 
-setTimeout(()=> this.setState({alert:null}), 5000)
+setAlert( {msg, type})
+setTimeout(()=> setAlert(null), 5000)
 }
 
-  render() {
-// destricured property
-    const{users, user,  repos, loading } = this.state;
+  
+
     // render is a method within a class life cycle method and runs at a certain point when the components are loaded and then it renders
     //const numbers= [1,2,3];
-
-    return (
+  
+    return ( 
       <Router>
       <div className="App">
         <Navbar />
 
         <div className="container">
-        <Alert alert = {this.state.alert} />
+        <Alert alert = {alert} />
           {/*sending a prop up instead of down from search users this gets rendered */}
           <Switch>
             <Route  exact path =  '/' render ={props =>(
               <Fragment>
-                 <Search searchUsers= {this.searchUsers} clearUsers= {this.clearUsers} showClear={users.length > 0 ? true: false} setAlert= {this.setAlert}/>
+                 <Search searchUsers= {searchUsers} clearUsers= {clearUsers} showClear={users.length > 0 ? true: false} setAlert= {showAlert}/>
           {/*  passed down users  state components to props */}
           <Users loading={loading} users= {users} />
               </Fragment>
             )}  />
             <Route  exact path = '/about' component ={About} />
             <Route  exact path = '/user/:login' render ={props =>(
-              <User {...props } getUser={this.getUser}  getUserRepos={this.getUserRepos} user ={user}  repos= {repos} loading ={loading}/>
+              <User {...props } getUser={getUser}  getUserRepos={getUserRepos} user ={user}  repos= {repos} loading ={loading}/>
             )} />
           </Switch>
        
@@ -104,7 +109,8 @@ setTimeout(()=> this.setState({alert:null}), 5000)
       </div>
       </Router>
     );
-  }
-}
+  
+            
+            }
 
 export default App;
