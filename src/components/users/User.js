@@ -14,7 +14,7 @@ const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
     getUserRepos(match.params.login);
     // eslint-disable-nextline
   }, []);
-};
+
 
 const {
   name,
@@ -105,8 +105,8 @@ return (
     <Repos repos={repos} />
   </Fragment>
 );
-
-UserpropTypes = {
+              }
+User.propTypes = {
   loading: PropTypes.bool,
   user: PropTypes.object.isRequired,
   repos: PropTypes.array.isRequired,

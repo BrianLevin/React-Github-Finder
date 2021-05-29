@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { UseState, Fragment } from "react";
 import Navbar from "./components/layout/Navbar"; // exported from navbar class
 import Users from "./components/users/Users";
 import Search from "./components/users/Search";
@@ -8,17 +8,15 @@ import { BrowserRouter as Router, Switch, Route } from  'react-router-dom';
 import Alert from "./components/layout/Alert";
 import "./App.css";
 import About from './components/pages/About'
+const App = () =>  {
 
-class App extends Component {
-  // put res.data users that come back into state
-  state = {
-    users: [],
-    user: {},
-    repos: [],
-    loading: false,
-    alert: null
-    
-  };
+const {users, setUsers} = useState({});
+const {user, setUser} = useState({});
+const {repos, setRepos} = useState({});
+const {loading, setLoading} = useState(false);
+const {alert, setAlert} = useState(null);
+
+  
 
   //life cycle method get users data with a promose
   // async componentDidMount() {
